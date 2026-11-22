@@ -1,0 +1,12 @@
+{
+  "camera": "CAMERA_IP",
+  "camera_http_port": 2020,
+  "camera_rtsp_port": 554,
+  "port": 12020,
+  "rtsp_port": 12554,
+  "lifetime": 600,
+  "renew_margin": 30,
+  "pull_timeout": 5,
+  "io_timeout": 8,
+  "log_level": "INFO"
+}

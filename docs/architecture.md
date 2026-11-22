@@ -1,0 +1,11 @@
+# Architecture
+
+Surveillance Station sends SOAP to 127.0.0.1:12020. The proxy sends regular requests to camera TCP 2020 by default and follows the validated SubscriptionReference for event operations. In the original tests the camera returned TCP 1024 with /event-1024_1024. A recovered lease may use another port. HTTP Address, XAddr and Uri elements pointing to allowed paths on the configured camera can be rewritten to the local proxy. The main service path remains independent of the subscription. RTSP URIs stay intact. A separate raw TCP relay at 127.0.0.1:12554 preserves Digest request URIs and interleaved RTP/RTCP frames.
+
+The camera sends tns1:RuleEngine/PeopleDetector/People with the boolean IsPeople. Initialized notifications pass through with their state intact. Surveillance Station's separate mapping classifies them as motion. Multiple notifications may correspond to one passage.
+
+Create and Renew anchor the granted lease to a monotonic clock and fix its renewal margin. Pull timestamps cannot shift that deadline or shrink the margin. The default 30-second margin on a 600-second lease accommodates the eight-second upstream budget and the one-second scheduler tick. A pull inside the renewal window triggers maintenance before it consumes events. Parallel requests for a busy lease get HTTP 503. Short camera grants and stalled networks can still force lease recreation.
+
+The service maintains up to four subscriptions and 64 discovered routes. The listeners use eight SOAP workers and four RTSP workers, with a backlog of eight each. SOAP bodies are capped at 4 MiB. The RTSP relay times out after 120 seconds of inactivity. Shutdown interrupts tracked connections and attempts Unsubscribe on idle live leases within a shared three-second budget. Remaining leases can expire at the camera.
+
+Recovery creates fresh WS-Security UsernameTokenDigest values. A lost pull is not replayed because its response may have contained consumed events. Later requests can use a newly created lease under the same local alias. After a proxy restart, Surveillance Station can resume without sending a Create request. Transient subscription errors back off from 5 to 60 seconds. Managed-lease authentication rejections use five minutes. Initial requests can use the client's HTTP authentication flow.
