@@ -6,7 +6,7 @@
 - [x] Run v3.2 protocol tests with CPython 3.8.
 - [x] Run POSIX credential, start, duplicate start, status, crash recovery, restart and graceful-stop tests with CPython 3.8 on Linux.
 - [x] Review repository contents for local credentials, captures and vendor files.
-- [ ] Add the license selected by the project owner.
+- [x] Add the MIT license selected by the project owner.
 - [ ] Publish or push after separate owner authorization.
 
 Run `python3 c120_onvif_proxy.py --self-test` and `python3 -m unittest discover -s tests -v` from the project root. Run the POSIX tests on a local filesystem under a regular user.
