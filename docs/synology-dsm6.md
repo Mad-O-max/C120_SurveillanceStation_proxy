@@ -4,6 +4,8 @@ DSM 6 Task Scheduler supports triggered user-defined scripts under a selected DS
 
 ## Stage the files
 
+Before configuring the NAS, open the C120's live view in the Tapo app and tap the settings icon. Go to **Advanced Settings → Camera Account** and create a camera username and password if you haven't already. Use these credentials in both `credentials.json` and the camera settings in Surveillance Station. The camera account is separate from your TP-Link ID and the DSM account that runs the proxy. [TP-Link camera account guide](https://www.tp-link.com/uk/support/faq/2790/)
+
 Use a dedicated, non-administrator DSM account. As an administrator, stage the code in a directory readable by that account and writable only by administrators. Keep state on a local filesystem that supports POSIX ownership, advisory locks and Unix sockets. Substitute the volume and runtime account. The account needs traversal access to the parent directories.
 
 ```sh
@@ -19,7 +21,7 @@ chmod 700 /volume1/c120/state
 
 As the runtime user, use a private editor and restrictive umask to create state/proxy.json and state/credentials.json from the templates. Set both files to mode 600. Credentials are plaintext protected by filesystem permissions. The service checks owner and permissions, and refuses credential symlinks. Keep state out of shared or synchronized folders. A supported DSM credential retrieval API for this script remains unverified.
 
-Use the absolute path to the installed Python interpreter. Check the version and configuration as the runtime user.
+On the older DS212+ with DSM 6.2.4, Synology's official Python3 package provides Python 3.8.6, the newest version it lists for this combination. That version meets the proxy's minimum requirement. Use the absolute path to the installed Python interpreter and check the version and configuration as the runtime user. [Synology Python3 package for DSM 6.2](https://www.synology.com/en-global/dsm/packages/py3k?os_ver=6.2)
 
 ```sh
 /path/to/python3 -c 'import sys; print(sys.version); sys.exit(sys.version_info < (3, 8, 6))'

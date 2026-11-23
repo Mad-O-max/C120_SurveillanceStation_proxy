@@ -1,6 +1,6 @@
 # Troubleshooting
 
-- **Authentication rejected**. Verify the camera account in Surveillance Station and credentials.json, and check NAS and camera time. Restart after correcting the credentials.
+- **Authentication rejected**. In the Tapo app, open the camera's settings and check **Advanced Settings → Camera Account**. Use that camera username and password in both Surveillance Station and `credentials.json`. If you changed the password in the app, update it in both places and restart the proxy. If authentication still fails, check the NAS and camera clocks. [TP-Link camera account guide](https://www.tp-link.com/uk/support/faq/2790/)
 - **HTTP 2020 works, event port fails**. Check the configured upstream port and the subscription destination in the log. The camera used TCP 1024 for a live /event-1024_1024 subscription. The port can change and may refuse connections without a lease. An empty HTTP GET has little diagnostic value. An existing subscription also worked via /onvif/service on TCP 2020 in a different test.
 - **No notification or marker**. Confirm the camera's AI settings, the PeopleDetector mapping, the active profile, recording and DS Cam notifications. Check that PullMessages and Renew succeed. Initialized notifications can carry valid detection changes.
 - **503 during a pull**. The lease may already be busy or waiting for recovery. Check maintenance warnings and look for a recovery event. An interrupted PullMessages request can lose events.

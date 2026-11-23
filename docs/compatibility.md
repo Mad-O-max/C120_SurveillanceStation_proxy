@@ -14,4 +14,6 @@
 
 The v3.1 hardware report recorded two successful renewals and 52 forwarded PeopleDetector notifications. Four test passages reached Tapo and DS Cam. A separate test confirmed archive markers. Video and recordings worked in the test, with one unattributed RTSP reset around startup.
 
+The proxy targets Python 3.8.6 to support the older DS212+ on DSM 6.2.4. This is the newest Python version listed for that combination in Synology's official Python3 package (build `3.8.6-0154`). [Synology Python3 package for DSM 6.2](https://www.synology.com/en-global/dsm/packages/py3k?os_ver=6.2)
+
 The v3.2 line has local tests on Windows with CPython 3.8.20 and Ubuntu under WSL with CPython 3.8.10. The local checks exercise routing, fresh WSSE, two simulated renewal cycles, recovery and resume, binary RTSP, credential permissions, log rotation and service control. The owner confirmed installation and unattended startup after a DS212+ reboot with v3.2.0. The 24-hour run and detailed protocol checks on the NAS remain pending. Other limited-update platforms may benefit from the workaround. Additional versions and community results remain unverified.
