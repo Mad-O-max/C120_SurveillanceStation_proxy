@@ -4,7 +4,7 @@ This workaround lets Surveillance Station use the Tapo C120's camera-side person
 
 ## Quick start
 
-1. Check the [compatibility matrix](docs/compatibility.md). The end-to-end camera test used diagnostic v3.1. This service version has passed local tests and awaits NAS acceptance.
+1. Check the [compatibility matrix](docs/compatibility.md). The end-to-end camera test used diagnostic v3.1. The owner confirmed installation and unattended boot for v3.2.0 on the DS212+. Further NAS acceptance checks are pending.
 2. Install with [DSM 6 Task Scheduler](docs/synology-dsm6.md). Use Python 3.8.6 or newer and the templates in [config](config/). Replace CAMERA_IP with the camera's IPv4 address and use the Tapo camera account.
 3. In Surveillance Station, use camera address 127.0.0.1 and HTTP port 12020. Under advanced device settings, select RTSP over TCP and custom RTSP port 12554. Select camera-side event detection and preserve the camera settings. Use continuous recording and configure DS Cam notifications.
 4. Review the [Surveillance Station mapping](docs/event-mapping.md) in a maintenance window. Test video and a real person event before relying on the installation.

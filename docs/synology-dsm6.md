@@ -1,6 +1,6 @@
 # Install and manage on DSM 6
 
-DSM 6 Task Scheduler supports triggered user-defined scripts under a selected DSM user. Use one Boot-up task. Before cutover, confirm that Boot-up and the runtime user are selectable on the target DS212+, and verify that the task can execute Python with the volume mounted. Reboot behavior of this service on the DS212+ is pending. [Synology DSM 6 Task Scheduler](https://kb.synology.com/vi-vn/DSM/help/DSM/AdminCenter/system_taskscheduler?version=6)
+DSM 6 Task Scheduler supports triggered user-defined scripts under a selected DSM user. Use one Boot-up task. The owner confirmed unattended startup after reboot on the DS212+ with v3.2.0. Before cutover on your NAS, verify that the task can execute Python as the runtime user with the volume mounted. [Synology DSM 6 Task Scheduler](https://kb.synology.com/vi-vn/DSM/help/DSM/AdminCenter/system_taskscheduler?version=6)
 
 ## Stage the files
 

@@ -15,14 +15,14 @@ Run `python3 c120_onvif_proxy.py --self-test` and `python3 -m unittest discover 
 
 | Check | Status |
 | --- | --- |
-| Boot task starts unattended after NAS reboot | Not run |
+| Boot task starts unattended after NAS reboot | Passed on the DS212+ with v3.2.0, owner-reported. |
 | 24 hours with multiple renewals and recorded CPU and memory usage | Not run |
 | Detection before and after Renew in Tapo, DS Cam and archive | Limited to predecessor evidence |
 | Camera power cycle and network interruption | Not run with v3.2 |
 | Stop, restart and duplicate handling | Run locally on Linux. NAS pending. |
 | Logging remains bounded and free of secrets over 24 hours | Rotation and redaction tested locally. NAS pending. |
 | RTSP recordings remain usable | Limited to predecessor evidence and local binary relay tests. Investigate repeated resets with a short opt-in RTSP capture. |
-| Installation, uninstall and rollback | Not run on NAS |
+| Installation, uninstall and rollback | Installation passed on the DS212+ with v3.2.0, owner-reported. Uninstall and rollback pending. |
 | Isolated event mapping and active profile trial | Not run |
 | Local syslog receipt and route | Not run. Deployment uses rotating log files. |
 
