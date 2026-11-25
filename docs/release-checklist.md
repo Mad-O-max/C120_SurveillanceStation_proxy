@@ -16,9 +16,9 @@ Run `python3 c120_onvif_proxy.py --self-test` and `python3 -m unittest discover 
 | Check | Status |
 | --- | --- |
 | Boot task starts unattended after NAS reboot | Passed on the DS212+ with v3.2.0, owner-reported. |
-| 24 hours with multiple renewals and recorded CPU and memory usage | Not run |
+| 24 hours with multiple renewals and recorded CPU and memory usage | Runtime and renewals passed on the DS212+ with v3.2.0. The proxy log shows 254 successful renewals over more than 40 hours before the deliberate camera power cut. CPU and memory usage were not recorded. |
 | Detection before and after Renew in Tapo, DS Cam and archive | Limited to predecessor evidence |
-| Camera power cycle and network interruption | Not run with v3.2 |
+| Camera power cycle and network interruption | Camera power cycle passed with v3.2.0. RTSP reconnected and the ONVIF subscription recovered without a proxy restart. A separate network interruption test is pending. |
 | Stop, restart and duplicate handling | Run locally on Linux. NAS pending. |
 | Logging remains bounded and free of secrets over 24 hours | Rotation and redaction tested locally. NAS pending. |
 | RTSP recordings remain usable | Limited to predecessor evidence and local binary relay tests. Investigate repeated resets with a short opt-in RTSP capture. |
